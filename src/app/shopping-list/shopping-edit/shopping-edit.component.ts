@@ -12,7 +12,7 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
   @ViewChild('amountInput') amountInputRef: ElementRef;
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
   }
@@ -22,7 +22,7 @@ export class ShoppingEditComponent implements OnInit {
       this.nameInputRef.nativeElement.value,
       Number.parseInt(this.amountInputRef.nativeElement.value, 10)
     );
-    this.shoppingListService.addIngredient(newIngredient);
+    this.slService.addIngredient(newIngredient);
   }
 
 }
