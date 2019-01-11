@@ -46,4 +46,8 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    console.log(this.recipeForm);
+  }
+
 }
