@@ -1,3 +1,4 @@
+import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Recipe } from './../recipes/recipe.model';
 import { RecipesService } from './../recipes/recipes.service';
 import { Injectable } from '@angular/core';
@@ -7,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class DataStorageService {
 
-  constructor(private http: Http, private recipesService: RecipesService) { }
+  constructor(private http: Http, private recipesService: RecipesService, private slService: ShoppingListService) { }
 
   storeRecipes() {
     return this.http.put('https://atharv-recipe-book.firebaseio.com/recipes.json', this.recipesService.getRecipes());
@@ -30,5 +31,19 @@ export class DataStorageService {
         this.recipesService.setRecipes(recipes);
       }
     );
+  }
+
+  storeShoppingList() {
+    return this.http.put('https://atharv-recipe-book.firebaseio.com/ingredients.json', this.slService.getIngredients());
+  }
+
+  fetchShoppingList() {
+    this.http.get('https://atharv-recipe-book.firebaseio.com/ingredients.json')
+      .subscribe(
+        (response: Response) => {
+          const ingredients = response.json();
+          this.slService.setIngredients(ingredients);
+        }
+      );
   }
 }
