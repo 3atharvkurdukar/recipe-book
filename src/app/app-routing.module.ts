@@ -1,3 +1,4 @@
+import { LoginComponent } from './auth/login/login.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -6,6 +7,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { NgModule } from '@angular/core';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -15,9 +17,9 @@ const appRoutes: Routes = [
     { path: ':id', component: RecipeDetailComponent },
     { path: ':id/edit', component: RecipeEditComponent }
   ] },
-  { path: 'shopping-list', component: ShoppingListComponent, children: [
-    { path: ':id', component: ShoppingEditComponent }
-  ] },
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent }
 ];
 @NgModule({
   imports: [
